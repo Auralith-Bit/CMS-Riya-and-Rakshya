@@ -23,7 +23,7 @@ export async function cmsGet(path, fallback) {
     const response = await fetch(`${API_BASE}${path}`);
     if (!response.ok) throw new Error(`CMS request failed: ${response.status}`);
     const data = await response.json();
-    if (Array.isArray(data) && data.length === 0 && Array.isArray(fallback) && fallback.length > 0) {
+    if (Array.isArray(data) && Array.isArray(fallback) && fallback.length > data.length) {
       return fallback;
     }
     return data;

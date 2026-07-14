@@ -51,25 +51,30 @@ class Command(BaseCommand):
             },
         )
 
-        Feedback.objects.get_or_create(
-            customer_name="Prakash Bhatta",
-            defaults={
-                "location": "Pokhara, Kaski",
-                "text": "Fresh, crunchy, and perfect for tea time. The snacks arrived in great condition.",
-                "rating": 5,
-                "is_visible": True,
-                "sort_order": 1,
-            },
-        )
-        Feedback.objects.get_or_create(
-            customer_name="Sita Devi Chaudhary",
-            defaults={
-                "location": "Janakpur, Dhanusha",
-                "text": "The masala taste is very good and customers ask for these packets again.",
-                "rating": 5,
-                "is_visible": True,
-                "sort_order": 2,
-            },
-        )
+        feedbacks = [
+            {"customer_name": "Prakash Bhatta",      "location": "Pokhara, Kaski",      "text": "Kushal All In One has the proper Nepali chatpate taste. The namkeen stays crunchy, the masala is balanced, and every packet feels fresh.", "rating": 5, "sort_order": 1},
+            {"customer_name": "Ramesh Kumar Yadav",   "location": "Butwal, Rupandehi",   "text": "I keep R&R snacks in my shop because customers ask for them again. The packaging looks clean, the price is practical, and the quality is consistent.", "rating": 5, "sort_order": 2},
+            {"customer_name": "Sita Devi Chaudhary",  "location": "Janakpur, Dhanusha",  "text": "The mixture namkeen tastes homemade but has professional finishing. It is spicy, crunchy, and perfect with tea for the whole family.", "rating": 5, "sort_order": 3},
+            {"customer_name": "Dipesh Mahato",        "location": "Biratnagar, Morang",  "text": "Potato chips and kids snacks are always fresh when they arrive. Good crunch, strong flavour, and very reliable for our canteen orders.", "rating": 5, "sort_order": 4},
+            {"customer_name": "Sabina Thapa",         "location": "Hetauda, Makwanpur",  "text": "R&R products have become regular snacks in our home. The taste feels local, the packets are hygienic, and the delivery is dependable.", "rating": 5, "sort_order": 5},
+            {"customer_name": "Bikash Adhikari",      "location": "Bharatpur, Chitwan",  "text": "The Korean Hot & Spicy noodles sell very fast in our store. Customers like the bold masala and the packet quality looks trustworthy.", "rating": 5, "sort_order": 6},
+            {"customer_name": "Mina Karki",           "location": "Nepalgunj, Banke",    "text": "I ordered namkeen for our office tea break and everyone liked it. The flavour is not flat, the crunch lasts, and the price is reasonable.", "rating": 5, "sort_order": 7},
+            {"customer_name": "Puja Lamichhane",      "location": "Tansen, Palpa",       "text": "Jungle Janawar and Cheese Balls are favourites for children in our family. Fresh packets, nice taste, and no stale smell at all.", "rating": 5, "sort_order": 8},
+            {"customer_name": "Amit Sah",             "location": "Birgunj, Parsa",      "text": "As a retailer, I appreciate that the products are consistent from carton to carton. R&R snacks are easy to recommend to regular customers.", "rating": 5, "sort_order": 9},
+            {"customer_name": "Anita Gurung",         "location": "Dharan, Sunsari",     "text": "The diet mixture has a clean taste and feels lighter than many other snacks. It is perfect when guests come home for chiya.", "rating": 5, "sort_order": 10},
+            {"customer_name": "Kiran Rai",            "location": "Ilam",                "text": "Chatpate Bhuja has a strong local flavour and the crunch is excellent. It reminds me of snacks we buy during travel, but cleaner packed.", "rating": 5, "sort_order": 11},
+            {"customer_name": "Laxmi Poudel",         "location": "Damak, Jhapa",        "text": "We use R&R snacks for school canteen supply because the small packs move quickly. Children like the taste and parents trust the hygiene.", "rating": 5, "sort_order": 12},
+            {"customer_name": "Roshan KC",            "location": "Dang",                "text": "The masala in the namkeen is balanced very well. It is spicy enough for Nepali taste but does not feel too heavy.", "rating": 5, "sort_order": 13},
+            {"customer_name": "Manisha Shahi",        "location": "Surkhet",             "text": "A-One chips are crispy and the flavour coating is even. Every packet I opened had the same freshness and crunch.", "rating": 5, "sort_order": 14},
+            {"customer_name": "Hari Prasad Nepal",    "location": "Kathmandu",           "text": "For wholesale orders, R&R has been dependable. Cartons arrive properly packed and customers recognize the taste now.", "rating": 5, "sort_order": 15},
+            {"customer_name": "Nirmala Magar",        "location": "Baglung",             "text": "Boondi mixture is very good with tea. The texture is light, the spice is clean, and the packet quality feels premium.", "rating": 5, "sort_order": 16},
+            {"customer_name": "Sanjay Tamang",        "location": "Bhaktapur",           "text": "My family liked the kids snacks because they are fun and tasty. The products feel fresh, not oily or stale.", "rating": 5, "sort_order": 17},
+            {"customer_name": "Rekha Sharma",         "location": "Lalitpur",            "text": "The snack range has good variety for a small store. Customers can choose noodles, chips, namkeen, and kids snacks from one brand.", "rating": 5, "sort_order": 18},
+        ]
+        for fb in feedbacks:
+            Feedback.objects.get_or_create(
+                customer_name=fb["customer_name"],
+                defaults={**fb, "is_visible": True},
+            )
 
         self.stdout.write(self.style.SUCCESS("Starter CMS data is ready."))
