@@ -16,21 +16,21 @@
 }
 
 .footer__brand-row img {
-  height: 48px;
+  height: 64px;
   object-fit: contain;
-  width: 48px;
+  width: 64px;
 }
 
 .footer__brand-name {
   color: #fff;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 850;
   line-height: 1.2;
 }
 
 .footer__brand-sub {
   color: #ffc107;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
